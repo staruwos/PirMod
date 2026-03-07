@@ -10,6 +10,7 @@ namespace PirMod.Patches
         [HarmonyPostfix]
         private static void InfiniteStamina(PlayerControllerB __instance)
         {
+            if (!PirMod.cfgInfiniteSprint.Value) return;
             __instance.sprintMeter = 1.0f; // Keeps stamina full always
         }
     }

@@ -13,6 +13,8 @@ namespace PirMod.Patches
         [HarmonyPrefix] // Run BEFORE the game's normal logic
         private static void MonsterTrigger(Landmine __instance, Collider other)
         {
+            if (!PirMod.cfgMineMonster.Value) return;
+
             // Safety Checks
             // If the mine has already blown up, do nothing.
             if (__instance.hasExploded) return;

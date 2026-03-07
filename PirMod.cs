@@ -1,4 +1,5 @@
 using BepInEx;
+using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using LobbyCompatibility.Attributes;
@@ -15,10 +16,20 @@ public class PirMod : BaseUnityPlugin
     internal new static ManualLogSource Logger { get; private set; } = null!;
     internal static Harmony? Harmony { get; set; }
 
+    public static ConfigEntry<bool> cfgInfiniteSprint;
+    public static ConfigEntry<bool> cfgMineMonster;
+    public static ConfigEntry<bool> cfgStarterShovel;
+    public static ConfigEntry<bool> cfgTurretTweaks;
+
     private void Awake()
     {
         Logger = base.Logger;
         Instance = this;
+
+        cfgInfiniteSprint = Config.Bind("Features", "InfiniteSprint", false, "Enable infinite stamina.");
+        cfgMineMonster = Config.Bind("Features", "MineMonster", true, "Monsters can step on and trigger landmines.");
+        cfgStarterShovel = Config.Bind("Features", "StarterShovel", false, "Spawn a shovel when the game starts.");
+        cfgTurretTweaks = Config.Bind("Features", "TurretTweaks", true, "Allow hitting turrets with a shovel to disable them.");
 
         Patch();
 
@@ -29,19 +40,21 @@ public class PirMod : BaseUnityPlugin
     {
         Harmony ??= new Harmony(MyPluginInfo.PLUGIN_GUID);
 
-        Logger.LogDebug("Patching...");
+        Logger.LogDebug("[PirMod] Patching...");
+
+        Logger.LogDebug("MURILO VIADO");
 
         Harmony.PatchAll();
 
-        Logger.LogDebug("Finished patching!");
+        Logger.LogDebug("[PirMod] Finished patching!");
     }
 
     internal static void Unpatch()
     {
-        Logger.LogDebug("Unpatching...");
+        Logger.LogDebug("[PirMod] Unpatching...");
 
         Harmony?.UnpatchSelf();
 
-        Logger.LogDebug("Finished unpatching!");
+        Logger.LogDebug("[PirMod] Finished unpatching!");
     }
 }

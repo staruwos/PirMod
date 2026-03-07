@@ -14,6 +14,8 @@ namespace PirMod.Patches
         [HarmonyPostfix]
         private static void SpawnItemOnLanding(StartOfRound __instance)
         {
+            if (!PirMod.cfgStarterShovel.Value) return;
+
             if (!NetworkManager.Singleton.IsHost && !NetworkManager.Singleton.IsServer)
                 return;
 
