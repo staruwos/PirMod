@@ -8,7 +8,6 @@ namespace PirMod.Patches
     [HarmonyPatch(typeof(StartOfRound))]
     internal class StarterShovelPatch
     {
-        // CHANGED: We now hook into "StartGame" (The Lever Pull) 
         // instead of "ResetShip" so it's easier to test.
         [HarmonyPatch("StartGame")]
         [HarmonyPostfix]
@@ -19,7 +18,7 @@ namespace PirMod.Patches
             if (!NetworkManager.Singleton.IsHost && !NetworkManager.Singleton.IsServer)
                 return;
 
-            // Example: Spawn a Shovel
+            // Spawn a Shovel
             Item itemToSpawn = __instance.allItemsList.itemsList.FirstOrDefault(i => i.itemName == "Shovel");
 
             if (itemToSpawn != null)
