@@ -3,14 +3,10 @@ using UnityEngine;
 
 namespace PirMod.Patches
 {
-    // Notice there is NO [HarmonyPatch] tag above the class name!
     internal class TurretTweaks
     {
         private static int mapHazardLayer = LayerMask.GetMask("MapHazards");
 
-        // =========================================================
-        // PATCH 1: The Hit Logic (Patches the Shovel)
-        // =========================================================
         [HarmonyPatch(typeof(Shovel), "HitShovel")] // Target class AND method specified here
         [HarmonyPostfix]
         private static void CheckForTurretHit(Shovel __instance)
