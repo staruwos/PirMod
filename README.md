@@ -19,7 +19,6 @@ A simple Lethal Company mod that adds fun mechanics and quality-of-life improvem
 ## Requirements
 
 * Lethal Company
-* TeamBMX.LobbyCompatibility 1.5.1
 * BepInEx 5.4.21+
 
 ## For Developers

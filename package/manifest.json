@@ -1,0 +1,9 @@
+{
+  "name": "PirMod",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/staruwos/PirMod",
+  "description": "Infinite sprint, mine-triggering monsters, and turret destruction!",
+  "dependencies": [
+    "BepInEx-BepInExPack-5.4.2100"
+  ]
+}

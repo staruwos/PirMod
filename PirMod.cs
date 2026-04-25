@@ -2,24 +2,20 @@ using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
-using LobbyCompatibility.Attributes;
-using LobbyCompatibility.Enums;
 
 namespace PirMod;
 
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
-[BepInDependency("BMX.LobbyCompatibility", BepInDependency.DependencyFlags.HardDependency)]
-[LobbyCompatibility(CompatibilityLevel.ClientOnly, VersionStrictness.None)]
 public class PirMod : BaseUnityPlugin
 {
     public static PirMod Instance { get; private set; } = null!;
     internal new static ManualLogSource Logger { get; private set; } = null!;
     internal static Harmony? Harmony { get; set; }
 
-    public static ConfigEntry<bool> cfgInfiniteSprint;
-    public static ConfigEntry<bool> cfgMineMonster;
-    public static ConfigEntry<bool> cfgStarterShovel;
-    public static ConfigEntry<bool> cfgTurretTweaks;
+    public static ConfigEntry<bool> cfgInfiniteSprint = null!;
+    public static ConfigEntry<bool> cfgMineMonster = null!;
+    public static ConfigEntry<bool> cfgStarterShovel = null!;
+    public static ConfigEntry<bool> cfgTurretTweaks = null!;
 
     private void Awake()
     {
@@ -42,7 +38,7 @@ public class PirMod : BaseUnityPlugin
 
         Logger.LogDebug("[PirMod] Patching...");
 
-        Logger.LogDebug("MURILO VIADO");
+        Logger.LogInfo("MURILO VIADO");
 
         Harmony.PatchAll();
 

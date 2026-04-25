@@ -3,11 +3,12 @@ using UnityEngine;
 
 namespace PirMod.Patches
 {
+    [HarmonyPatch]
     internal class TurretTweaks
     {
         private static int mapHazardLayer = LayerMask.GetMask("MapHazards");
 
-        [HarmonyPatch(typeof(Shovel), "HitShovel")] // Target class AND method specified here
+        [HarmonyPatch(typeof(Shovel), nameof(Shovel.HitShovel))]
         [HarmonyPostfix]
         private static void CheckForTurretHit(Shovel __instance)
         {
@@ -35,11 +36,11 @@ namespace PirMod.Patches
             }
         }
 
-        [HarmonyPatch(typeof(Turret), "ToggleTurretClientRpc")] // Target class AND method specified here
+        [HarmonyPatch(typeof(Turret), nameof(Turret.ToggleTurretClientRpc))]
         [HarmonyPostfix]
-        private static void ForceStopAudioOnNetwork(Turret __instance, bool enabled)
+        private static void ForceStopAudioOnNetwork(Turret __instance, bool __0) // Use __0 to avoid parameter renaming issues
         {
-            if (!enabled)
+            if (!__0) // __0 represents the first argument passed (the true/false toggle)
             {
                 __instance.turretMode = 0; // Force Idle
 
