@@ -1,6 +1,6 @@
 {
   "name": "PirMod",
-  "version_number": "1.0.0",
+  "version_number": "1.0.2",
   "website_url": "https://github.com/staruwos/PirMod",
   "description": "Infinite sprint, mine-triggering monsters, and turret destruction!",
   "dependencies": [

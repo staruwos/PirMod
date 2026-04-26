@@ -1,5 +1,6 @@
 using HarmonyLib;
 using GameNetcodeStuff;
+using Unity.Netcode; 
 
 namespace PirMod.Patches
 {
@@ -11,7 +12,12 @@ namespace PirMod.Patches
         private static void InfiniteStamina(PlayerControllerB __instance)
         {
             if (!PirMod.cfgInfiniteSprint.Value) return;
-            __instance.sprintMeter = 1.0f; // Keeps stamina full always
+
+            if (NetworkManager.Singleton == null) return;
+
+            if (!__instance.IsOwner) return;
+
+            __instance.sprintMeter = 1.0f;
         }
     }
 }

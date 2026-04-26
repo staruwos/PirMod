@@ -5,7 +5,7 @@ using HarmonyLib;
 
 namespace PirMod;
 
-[BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
+[BepInPlugin(PirMod.PLUGIN_GUID, PirMod.PLUGIN_NAME, PirMod.PLUGIN_VERSION)]
 public class PirMod : BaseUnityPlugin
 {
     public static PirMod Instance { get; private set; } = null!;
@@ -16,6 +16,10 @@ public class PirMod : BaseUnityPlugin
     public static ConfigEntry<bool> cfgMineMonster = null!;
     public static ConfigEntry<bool> cfgStarterShovel = null!;
     public static ConfigEntry<bool> cfgTurretTweaks = null!;
+
+    public const string PLUGIN_GUID = "PirMod";
+    public const string PLUGIN_NAME = "PirMod";
+    public const string PLUGIN_VERSION = "1.0.2";
 
     private void Awake()
     {
@@ -29,7 +33,7 @@ public class PirMod : BaseUnityPlugin
 
         Patch();
 
-        Logger.LogInfo($"{MyPluginInfo.PLUGIN_GUID} v{MyPluginInfo.PLUGIN_VERSION} has loaded!");
+        Logger.LogInfo($"{PirMod.PLUGIN_GUID} v{PirMod.PLUGIN_VERSION} has loaded!");
     }
 
     internal static void Patch()
@@ -38,7 +42,6 @@ public class PirMod : BaseUnityPlugin
 
         Logger.LogDebug("[PirMod] Patching...");
 
-        Logger.LogInfo("MURILO VIADO");
 
         Harmony.PatchAll();
 

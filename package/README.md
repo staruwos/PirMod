@@ -13,13 +13,3 @@ All features can be individually toggled on or off in the mod's configuration fi
 
 ## Configuration
 After running the game with the mod installed for the first time, a configuration file will be generated at `BepInEx/config/PirMod.cfg`. You can edit this file directly or use the config editor built into r2modman/Thunderstore to easily enable or disable any of the features listed above.
-
-
-## Changelog
-
-### v1.0.0
-* Initial release.
-* Added Infinite Sprint.
-* Added Mine Monster interactions (enemies trigger landmines).
-* Added Starter Shovel spawn.
-* Added Turret Tweaks (shovel hits disable turrets).
