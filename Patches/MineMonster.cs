@@ -41,7 +41,7 @@ namespace PirMod.Patches
                     // Kill or Damage the Enemy
                     // 'KillEnemyOnOwnerClient' forces the enemy to die properly (play death anim, stop moving)
                     // The 'true' overrides any invincibility.
-                    enemy.KillEnemyOnOwnerClient(true);
+                    enemy.KillEnemyServerRpc(false);
                 }
             }
         }

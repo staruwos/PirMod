@@ -34,7 +34,7 @@ async def on_ready():
     print(f'Logged in as {bot.user.name} ({bot.user.id})')
     check_pirmod_updates.start() # Start the background loop
 
-@tasks.loop(minutes=10) # Checks Thunderstore every 10 minutes
+@tasks.loop(minutes=1440) # Checks Thunderstore every 1440 minutes, one time per day
 async def check_pirmod_updates():
     channel = bot.get_channel(CHANNEL_ID)
     if not channel:
