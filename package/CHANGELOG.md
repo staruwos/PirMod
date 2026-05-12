@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.0.5] - 2026-04-29
+### Added
+- **Weed Spray Bees:** Weed killer can now exterminate Red Locust Bees! Risk/Reward mechanic: spraying the bees safely exterminates them, but spraying too close to the comb (within 4.5 meters) will dissolve the hive and destroy the loot. Added configuration toggle (`cfgWeedSprayBees`).
+
+### Fixed
+- **Turret Tweaks:** Fixed a bug where hitting a turret with a shovel would break the player's swing animation state, preventing the shovel from being used again.
+
+### Changed
+- **Starter Shovel:** Improved v80 stability by utilizing `nameof()` for patch targeting to prevent silent breaks in future game updates.
+
+## [1.0.3] - 2026-04-27
+### Changed
+- **MineMonster:** Fixed a severe desync issue.
+
 ## [1.0.2] - 2026-04-26
 ### Changed
 - **Documentation:** Cleaned up `README.md` for better readability and clearer installation instructions.

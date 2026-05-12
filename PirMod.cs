@@ -16,10 +16,11 @@ public class PirMod : BaseUnityPlugin
     public static ConfigEntry<bool> cfgMineMonster = null!;
     public static ConfigEntry<bool> cfgStarterShovel = null!;
     public static ConfigEntry<bool> cfgTurretTweaks = null!;
+    public static ConfigEntry<bool> cfgWeedSprayBees = null!;
 
     public const string PLUGIN_GUID = "PirMod";
     public const string PLUGIN_NAME = "PirMod";
-    public const string PLUGIN_VERSION = "1.0.2";
+    public const string PLUGIN_VERSION = "1.0.5";
 
     private void Awake()
     {
@@ -28,8 +29,9 @@ public class PirMod : BaseUnityPlugin
 
         cfgInfiniteSprint = Config.Bind("Features", "InfiniteSprint", false, "Enable infinite stamina.");
         cfgMineMonster = Config.Bind("Features", "MineMonster", true, "Monsters can step on and trigger landmines.");
-        cfgStarterShovel = Config.Bind("Features", "StarterShovel", false, "Spawn a shovel when the game starts.");
+        cfgStarterShovel = Config.Bind("Features", "StarterShovel", true, "Spawn a shovel when the game starts.");
         cfgTurretTweaks = Config.Bind("Features", "TurretTweaks", true, "Allow hitting turrets with a shovel to disable them.");
+        cfgWeedSprayBees = Config.Bind("Features", "WeedSprayBees", true, "Weed spray exterminates bees, but destroys the hive if sprayed too close.");
 
         Patch();
 

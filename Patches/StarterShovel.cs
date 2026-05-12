@@ -8,8 +8,7 @@ namespace PirMod.Patches
     [HarmonyPatch(typeof(StartOfRound))]
     internal class StarterShovelPatch
     {
-        // instead of "ResetShip" so it's easier to test.
-        [HarmonyPatch("StartGame")]
+        [HarmonyPatch(nameof(StartOfRound.StartGame))]
         [HarmonyPostfix]
         private static void SpawnItemOnLanding(StartOfRound __instance)
         {
@@ -18,19 +17,22 @@ namespace PirMod.Patches
             if (!NetworkManager.Singleton.IsHost && !NetworkManager.Singleton.IsServer)
                 return;
 
-            // Spawn a Shovel
+            //  Shovel to spawn
             Item itemToSpawn = __instance.allItemsList.itemsList.FirstOrDefault(i => i.itemName == "Shovel");
 
             if (itemToSpawn != null)
             {
-                // Spawn it slightly in the air so it doesn't get stuck
                 Vector3 spawnPos = __instance.playerSpawnPositions[0].position + new Vector3(0f, 1f, 0f);
 
                 GameObject itemObj = Object.Instantiate(itemToSpawn.spawnPrefab, spawnPos, Quaternion.identity);
                 itemObj.GetComponent<GrabbableObject>().fallTime = 0f;
+
+                // Parent the item to the ship so it doesn't clip through the floor while moving
+                itemObj.transform.SetParent(__instance.elevatorTransform, true);
+
                 itemObj.GetComponent<NetworkObject>().Spawn();
 
-                Debug.Log("TESTING: Shovel spawned on landing!");
+                PirMod.Logger.LogInfo("[PirMod] Starter Shovel spawned successfully!");
             }
         }
     }
